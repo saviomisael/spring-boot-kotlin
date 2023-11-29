@@ -4,6 +4,7 @@ import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,4 +22,7 @@ class HelloWorldController @Autowired constructor(val employeeValidator: Employe
     fun validateEmployee(@Valid @RequestBody employee: Employee): ResponseEntity<String> {
         return ResponseEntity.ok("Employee created successfully")
     }
+
+    @GetMapping("/{message}")
+    fun greeting(@PathVariable message: String): String = "Hello, $message"
 }
